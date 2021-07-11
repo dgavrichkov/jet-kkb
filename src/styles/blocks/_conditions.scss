@@ -4,40 +4,51 @@
 			grid-template-columns: repeat(2, 1fr);
 			column-gap: $gap-tablet;
 		}
+
 		@include to(640px) {
 			grid-template-columns: 1fr;
 			column-gap: $gap-mobile;
 		}
+
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		column-gap: $gap-desktop;
 	}
+
 	&__illustration {
 		@include to(1024px) {
 			grid-row: 2;
 		}
+
 		@include to(640px) {
 			grid-row: 1;
 		}
+
 		width: 100%;
+
 		img {
 			width: 100%;
 			height: auto;
 		}
+
 		grid-column: 1;
 		grid-row: 1 / 4;
 	}
+
 	&__content {
 		@include to(1024px) {
 			grid-row: 2;
 		}
+
 		@include to(640px) {
 			grid-column: 1;
 			grid-row: 3;
 		}
+
 		grid-column: 2;
 		grid-row: 2;
 	}
+
 	&__title {
 		@include to(1024px) {
 			font-size: 36px;
@@ -48,15 +59,17 @@
 			grid-row: 1;
 			justify-self: center;
 		}
+
 		@include to(640px) {
 			font-size: 32px;
 			line-height: 40px;
 			margin-bottom: 22px;
-			grid-row: 2; 
+			grid-row: 2;
 			justify-self: start;
 			padding-top: 0;
 			margin-top: -20px;
 		}
+
 		padding-top: 20px;
 		font-weight: 900;
 		font-size: 50px;
@@ -67,38 +80,37 @@
 		grid-column: 2;
 		grid-row: 1;
 	}
-	&__list {
-		@include to(1024px) {
 
-		}
-		@include to(640px) {
-			
-		}
-	}
 	&__list li {
 		@include to(1024px) {
 			font-size: 15px;
 			line-height: 22px;
 		}
+
 		@include to(640px) {
 			font-size: 15px;
 			line-height: 22px;
 		}
+
 		color: #636B84;
 		font-weight: normal;
 		font-size: 18px;
 		line-height: 26px;
 		position: relative;
 		padding-left: calc(19px + 21px);
+
 		&:not(:last-child) {
 			@include to(1024px) {
 				margin-bottom: 18px;
 			}
+
 			@include to(640px) {
 				margin-bottom: 32px;
 			}
+
 			margin-bottom: 32px;
 		}
+
 		&::before {
 			content: "";
 			width: 19px;

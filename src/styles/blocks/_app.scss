@@ -36,6 +36,9 @@
 		@include to(425px) {
 			width: 100%;
 		}
+		@include to(320px) {
+			font-size: 24px;
+		}
 
 		font-weight: 400;
 		font-size: 48px;
@@ -61,6 +64,8 @@
 		grid-template-columns: 1fr 1fr;
 		gap: 18px;
 		width: 352px;
+		max-width: 100%;
+
 		margin-top: 43px;
 	}
 }

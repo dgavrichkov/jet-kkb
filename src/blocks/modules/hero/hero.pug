@@ -1,7 +1,9 @@
 section.hero
 	div.hero__inner.container
 		div.hero__content
-			header.hero__logo
+			figure.hero__logo
+				picture
+					img(src="images/logo.svg" alt="")
 			h1.hero__title Мобильный банкинг без границ
 			p.hero__text Привязывайте карты банков Кыргызстана, оплачивайте услуги без комиссий, совершайте переводы с карты на карту любых банков – и всё это в одном приложении. Теперь деньги работают так, как это должно быть в современном мире: быстро, онлайн, на вас. 
 			div.hero__links
@@ -10,5 +12,8 @@ section.hero
 		div.hero__illustration
 			figure.hero__pic
 				picture
-					img
+					source(srcset="images/hero-group.png" media="(min-width: 1025px)")
+					source(srcset="images/hero-group-tablet.png" media="(min-width: 641px)")
+					source(srcset="images/hero-group-mob.png" media="(max-width: 640px)")
+					img(src="images/hero-group.png" alt="")
 			

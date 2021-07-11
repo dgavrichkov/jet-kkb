@@ -7,6 +7,7 @@
 	background: radial-gradient(36.05% 27.41% at 71.95% 72.59%, #05166F 0%, #05133D 100%);
 	color: #fff;
 	position: relative;
+	overflow: hidden;
 	&__inner {
 		@include to(1024px) {
 			grid-template-columns: repeat(8, 1fr);
@@ -34,6 +35,13 @@
 		grid-column: 1 / 6;
 	}
 	&__logo {
+		@include to(640px) {
+			display: flex;
+			justify-content: center;
+			img {
+				margin: 0 auto;
+			}
+		}
 		width: 100%;
 	}
 	&__title {
@@ -51,6 +59,7 @@
 			text-align: center;
 			margin-bottom: 18px;
 			margin-right: 0;
+			margin-top: 73px;
 		}
 		@include to(320px) {
 			font-size: 38px;
@@ -135,7 +144,10 @@
 			background-image: url(../images/hero-back-pic-tablet.svg);
 			background-position: right center;
 		}
-		@include to(1024px) {
+		@include to(640px) {
+			background-image: url(../images/hero-back-pic-mobile.png);
+			background-position: right bottom;
+			// background-size: 74%;
 		}
 		content: "";
 		position: absolute;

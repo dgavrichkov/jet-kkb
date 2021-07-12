@@ -1,0 +1,194 @@
+.advantages {
+	padding: 133px 0 141px;
+	&__inner {
+		@include to(1024px) {
+			grid-template-columns: repeat(8, 1fr);
+			gap: $gap-tablet;
+		}
+		@include to(640px) {
+			grid-template-columns: repeat(4, 1fr);
+			gap: $gap-mobile;
+		}
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: $gap-desktop;
+	}
+	&__content {
+		@include to(1024px) {
+			grid-column: 1 / span 5;
+		}
+		grid-column: 1 / span 7;
+	}
+	&__title {
+		@include to(1024px) {
+			font-size: 36px;
+			line-height: 48px;
+			margin-bottom: 60px;
+			margin-top: 0;
+		}
+		@include to(640px) {
+			font-size: 32px;
+			line-height: 40px;
+			margin-bottom: 40px;
+		}
+		font-weight: 900;
+		font-size: 50px;
+		line-height: 66px;
+		margin-bottom: 80px;
+		margin-top: 70px;
+		color: $ca;
+	}
+	&__item {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+		position: relative;
+		display: flex;
+		align-items: flex-start;
+		&:not(:last-child) {
+			@include to(1024px) {
+				margin-bottom: 26px;
+			}
+			@include to(640px) {
+			
+			}
+			margin-bottom: 51px;
+		}
+		&::before {
+			@include to(1024px) {
+				width: 60px;
+				height: 60px;
+				margin-right: 20px;
+			}
+			content: "";
+			display: block;
+			width: 86px;
+			height: 86px;
+			border-radius: 50%;
+			background-repeat: no-repeat;
+			background-size: 70%;
+			background-position: center;
+			margin-right: 31px;
+			flex-shrink: 0;
+		}
+		&--1 {
+			&::before {
+				background-image: url(../images/icon-wow-1.svg);
+				background-color: #FFF1F1;
+			}
+		}
+		&--2 {
+			&::before {
+				background-image: url(../images/icon-wow-2.svg);
+				background-color: #FFF6D9;
+			}
+		}
+		&--3 {
+			&::before {
+				background-image: url(../images/icon-wow-3.svg);
+				background-color: #E0F8E9;
+			}
+		}
+	}
+	&__item-title {
+		@include to(1024px) {
+			font-size: 18px;
+			line-height: 24px;
+		}
+		@include to(640px) {
+			font-size: 18px;
+			line-height: 24px;
+		}
+		font-weight: 900;
+		font-size: 22px;
+		line-height: 30px;
+		margin-bottom: 12px;
+		color: $ca;
+		padding-top: 10px;
+
+	}
+	&__item-text {
+		@include to(1024px) {
+			font-size: 15px;
+			line-height: 22px;
+		}
+		@include to(640px) {
+			font-size: 15px;
+			line-height: 22px;
+		}
+		font-weight: normal;
+		font-size: 18px;
+		line-height: 26px;
+		color: $cb;
+	}
+	&__illustration {
+		@include to(1024px) {
+			grid-column: span 3 / -1;
+			transform: translateX(0);
+			margin-left: -16px;
+		}
+		@include to(640px) {
+			
+		}
+		grid-column: span 4 / -1;
+		transform: translateX(-24px);
+	}
+}
+
+.phone {
+	padding-bottom: 202.17%;
+	background: #F3F5F7;
+	box-shadow: 37.1021px 55.6532px 74.2043px rgba(62, 68, 128, 0.25), inset -4.70347px -12.0946px 18.5511px rgba(102, 131, 188, 0.25), inset 9.27553px 1.85511px 18.5511px #FFFFFF;
+	border-radius: 46.3777px;
+	overflow: hidden;
+	position: relative;
+	&__inner {
+		border-radius: 46.3777px;
+		overflow: hidden;
+		width: calc(100% - 28px);
+		height: calc(100% - 24px);
+		overflow: hidden;
+		position: absolute;
+		left: 14px;
+		top: 12px;
+		&::before {
+			content: "";
+			display: block;
+			height: 81px;
+			background: url(../images/phone-index-head.png) no-repeat;
+			background-color: #0068FF;
+			background-size: 98% auto;
+		}
+		&::after {
+			content: "";
+			display: block;
+			height: 47px;
+			background: url(../images/phone-index-bottom.png) no-repeat;
+			background-size: 98% auto;
+			background-position-x: center;
+			background-color: #fff;
+		}
+	}
+	&__content {
+		display: block;
+		height: calc(100% - 81px - 47px);
+		overflow: auto;
+		overscroll-behavior: contain;
+		background: #fff;
+		@media (hover: hover) {
+			scrollbar-width: none;
+			&::-webkit-scrollbar {
+				width: 0px;
+				background: transparent;
+			}
+		}
+		
+		img {
+			width: 100%;
+			height: auto;
+		}
+	}
+}

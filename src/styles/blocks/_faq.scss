@@ -70,10 +70,9 @@
                 
             }
             .accordeon__head::after {
-                transform: rotate(180deg);
+                transform: rotate3d(1, 0, 0, 180deg);
             }
         }
-
     }
     &__head {
         @include to(1024px) {
@@ -105,28 +104,39 @@
             }
             content: "";
             display: block;
+            margin: 10px 0;
             margin-left: auto;
             width: 16px;
             height: 16px;
             background-image: $i-chevron-dark;
             background-repeat: no-repeat;
+            background-position: center;
             background-size: contain;
             flex-shrink: 0; 
-            margin-top: 10px;
+            transition: transform .6s;
+            transform-origin: center;
         }
     }
     &__body {
         @include to(1024px) {
-           padding-bottom: 5px;
+            & > *:last-child {
+                padding-bottom: 5px;
+            }
         }
         @include to(640px) {
             
         }
         color: $cb;
-        padding-bottom: 10px;
+        height: 0;
+        transition: height .6s;
+        overflow: hidden;
         & > *:first-child {
             margin-top: 22px;
         }
+        & > *:last-child {
+            padding-bottom: 10px;
+        }
+
         p {
             @include to(1024px) {
            

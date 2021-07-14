@@ -2,17 +2,19 @@ section.services
 	div.services__inner.container
 		h2.services__title Что доступно в приложении
 		div.services__tab.servtab
-			ul.servtab__controls
-				li.servtab__control(data-tab-control="transactions") Переводы
-				li.servtab__control(data-tab-control="payment") Оплата услуг
-				li.servtab__control(data-tab-control="bonus") Бонусная система
-				li.servtab__control(data-tab-control="monitor") Мониторинг операций
-				li.servtab__control(data-tab-control="support") Поддержка
-			div.servtab__indicator
-				div.servtab__indicator-caret
+			div.servtab__header
+				div.servtab__controls
+					div.servtab__control(data-tab-control="transactions") Переводы
+					div.servtab__control(data-tab-control="payment") Оплата услуг
+					div.servtab__control(data-tab-control="bonus") Бонусная система
+					div.servtab__control(data-tab-control="monitor") Мониторинг операций
+					div.servtab__control(data-tab-control="support") Поддержка
+					div.servtab__indicator
+						div.servtab__indicator-caret
 			ul.servtab__content
 				li.servtab__screen(data-tab-screen="transactions")
-					div.serve__mobile-control
+					div.servtab__mobile-control
+						span Переводы
 					article.serve
 						figure.serve__illustration
 							picture
@@ -21,7 +23,8 @@ section.services
 							h3.serve__title Переводы
 							p.serve__desc Легкие переводы с карты на карту любого банка мира (VISA и MasterCard).
 				li.servtab__screen(data-tab-screen="payment")
-					div.serve__mobile-control
+					div.servtab__mobile-control
+						span Оплата услуг
 					article.serve
 						figure.serve__illustration
 							picture
@@ -33,7 +36,8 @@ section.services
 							h3.serve__title Оплата услуг
 							p.serve__desc Оплачивайте услуги в приложении KKB без комиссии и получайте бонусы.
 				li.servtab__screen(data-tab-screen="bonus")
-					div.serve__mobile-control
+					div.servtab__mobile-control
+						span Бонусная система
 					article.serve
 						figure.serve__illustration
 							picture
@@ -42,7 +46,8 @@ section.services
 							h3.serve__title Бонусная система
 							p.serve__desc Совершайте платежи в приложении и получайте бонусы: 1% от суммы транзакции.
 				li.servtab__screen(data-tab-screen="monitor")
-					div.serve__mobile-control
+					div.servtab__mobile-control 
+						span Мониторинг операций
 					article.serve
 						figure.serve__illustration
 							picture
@@ -51,7 +56,8 @@ section.services
 							h3.serve__title Мониторинг операций
 							p.serve__desc Вы можете отследить все ваши действия в приложении.
 				li.servtab__screen(data-tab-screen="support")
-					div.serve__mobile-control
+					div.servtab__mobile-control 
+						span Поддержка
 					article.serve
 						figure.serve__illustration
 							picture

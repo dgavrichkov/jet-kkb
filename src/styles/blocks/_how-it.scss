@@ -1,0 +1,106 @@
+.how-it {
+	background: #F7F9FE;
+	padding-top: 90px;
+	padding-bottom: 140px;
+	&__inner {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+	&__title {
+		@include to(1024px) {
+			margin-bottom: 45px;
+			font-size: 36px;
+			line-height: 48px;
+		}
+		@include to(640px) {
+			margin-bottom: 23px;
+			font-size: 32px;
+			line-height: 40px;
+		}
+		b {
+			font-weight: 900;
+			display: block;
+		}
+		span {
+			font-weight: 400;
+			display: block;
+		}
+		font-size: 50px;
+		line-height: 66px;
+		color: $ca;
+		margin-bottom: 46px;
+	}
+	&__content {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+	&__text {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+	&__text-item {
+		display: flex;
+	}
+
+	&__text-count {
+		margin-right: 36px;
+		width: 46px;
+		height: 46px;
+		color: #fff;
+		position: relative;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		span {
+			position: relative;
+			z-index: 2;
+			font-weight: 900;
+			font-size: 22.3784px;
+			line-height: 41px;
+		}
+		svg {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&__text-item {
+		@include to(1024px) {
+			font-size: 15px;
+			line-height: 22px;
+		}
+		@include to(640px) {
+			font-size: 15px;
+			line-height: 22px;
+		}
+		color: $ca;
+		font-size: 18px;
+		line-height: 26px;
+		font-weight: 400;
+		b {
+			font-weight: 900;
+		}
+	}
+	&__screens {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+}

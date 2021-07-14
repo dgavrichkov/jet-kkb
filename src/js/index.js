@@ -11,7 +11,6 @@ class Accordeon {
         this._handleResize = this._handleResize.bind(this);
     }
     init() {
-        console.log(this._current)
         this._setHeadClickHandler();
         this._setResizeHandler();
     }

@@ -1,0 +1,207 @@
+.services {
+	padding-top: 100px;
+	padding-bottom: 115px;
+	&__inner {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+	&__title {
+		@include to(1024px) {
+			margin-bottom: 26px;
+			font-size: 36px;
+			line-height: 48px;
+		}
+		@include to(640px) {
+			margin-bottom: 37px;
+			font-size: 32px;
+			line-height: 40px;
+		}
+		font-weight: 900;
+		font-size: 50px;
+		line-height: 66px;
+		color: $ca;
+		margin-bottom: 34px;
+		text-align: center;
+	}
+	&__tab {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+}
+
+
+.servtab {
+	&__header {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+	}
+	&__controls {
+		@include to(1024px) {
+			width: 647px;
+		}
+		@include to(640px) {
+			display: none;
+		}
+		display: flex;
+		justify-content: space-between;
+		position: relative;
+		width: 825px;
+		max-width: 100%;
+	}
+	&__control {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+		font-size: 16px;
+		line-height: 66px;
+		color: $cb;
+		cursor: pointer;
+		padding: 0 2px;
+		width: max-content;
+		&.is-active {
+
+		}
+	}
+	&__indicator {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+		width: 100%;
+		height: 1px;
+		background: #C8D8E4;
+		position: absolute;
+		top: 100%;
+		left: 0;
+	}
+	&__indicator-caret {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+		position: absolute;
+		width: 50px;
+		height: 2px;
+		background-color: $ca;
+		left: 0;
+		bottom: 0;
+		transition: left 0.4s ease-in-out;
+	}
+	&__content {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+	&__screen {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			margin-bottom: 6px;
+			.serve {
+				height: 0;
+				overflow: hidden;
+				transition: height .6s;
+			}
+		}
+	}
+	&__mobile-control {
+		@include from(641px) {
+			display: none;
+		}
+		border: 1px solid #F7F9FE;
+		border-radius: 8px;
+		font-weight: normal;
+		font-size: 15px;
+		line-height: 60px;
+		color: $ca;
+		padding: 0 20px;
+		background: #F7F9FE;
+		display: flex;
+		align-items: center;
+		cursor: pointer;
+		&.is-active {
+			background: #fff;
+			border-color: #05133D;
+			&::after {
+				transform: rotate3d(1, 0, 0, 180deg);
+			}
+		}
+
+		&::after {
+			content: "";
+			display: block;
+			margin: 10px 0;
+			margin-left: auto;
+			width: 10px;
+			height: 10px;
+			background-image: $i-chevron-dark;
+			background-repeat: no-repeat;
+			background-position: center;
+			background-size: contain;
+			flex-shrink: 0; 
+			transition: transform .6s;
+			transform-origin: center;
+		}
+	}
+}
+
+.serve {
+	&__illustration {
+		@include to(1024px) {
+
+		}
+		@include to(640px) {
+			
+		}
+	}
+	&__content {
+		@include to(640px) {
+			margin-top: 32px;
+			
+		}
+	}
+	&__title {
+		@include to(1024px) {
+			margin-bottom: 12px;
+			font-size: 22px;
+			line-height: 32px;
+		}
+		@include to(640px) {
+			margin-bottom: 9px;
+			font-size: 22px;
+			line-height: 32px;
+		}
+		font-weight: 900;
+		font-size: 36px;
+		line-height: 46px;
+		color: $ca;
+		margin-bottom: 18px;
+	}
+	&__desc {
+		font-weight: normal;
+		font-size: 22px;
+		line-height: 33px;
+		color: $cb;
+	}
+}

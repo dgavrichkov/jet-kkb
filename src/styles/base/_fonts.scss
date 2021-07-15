@@ -1,12 +1,12 @@
 @font-face {
 	font-family: "Nexa";
 	font-weight: 400;
-	src: url("../fonts/Nexa-Regular.woff2") format("woff2");
+	src: url("../fonts/Nexa-Regular.otf") format("opentype");
 	font-display: swap;
 }
 @font-face {
 	font-family: "Nexa";
 	font-weight: 900;
-	src: url("../fonts/Nexa-Heavy.woff2") format("woff2");
+	src: url("../fonts/Nexa-Heavy.otf") format("otf"), url("../fonts/Nexa-Heavy.woff2") format("woff2"), url("../fonts/Nexa-Heavy.woff") format("woff");
 	font-display: swap;
 }

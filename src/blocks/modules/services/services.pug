@@ -5,7 +5,7 @@ section.services
 			div.servtab__header
 				div.servtab__controls
 					div.servtab__control(data-tab-control="transactions") Переводы
-					div.servtab__control(data-tab-control="payment") Оплата услуг
+					div.is-active.servtab__control(data-tab-control="payment") Оплата услуг
 					div.servtab__control(data-tab-control="bonus") Бонусная система
 					div.servtab__control(data-tab-control="monitor") Мониторинг операций
 					div.servtab__control(data-tab-control="support") Поддержка
@@ -17,8 +17,10 @@ section.services
 						span Переводы
 					article.serve
 						figure.serve__illustration
-							picture
-								img(src="" alt="")
+							div.serve__phonepic
+								.phone
+									.phone__inner
+										img(src="images/screen-transactions.png" alt="").serve__phonepic-screen
 							div.video-preview
 								img(src="images/transaction-preview.png" alt="")
 						div.serve__content
@@ -29,8 +31,10 @@ section.services
 						span Оплата услуг
 					article.serve
 						figure.serve__illustration
-							picture
-								img(src="" alt="")
+							div.serve__phonepic
+								.phone
+									.phone__inner
+										img(src="images/screen-payment.png" alt="").serve__phonepic-screen
 							div.video-preview
 								img(src="images/payment-preview.png" alt="")
 						div.serve__content
@@ -41,8 +45,12 @@ section.services
 						span Бонусная система
 					article.serve
 						figure.serve__illustration
-							picture
-								img(src="" alt="")
+							div.serve__phonepic
+								.phone
+									.phone__inner
+										img(src="images/screen-bonuses.png" alt="").serve__phonepic-screen
+							div.serve__addt-pic
+								img(src="images/bonuses-pocket.png")
 						div.serve__content
 							h3.serve__title Бонусная система
 							p.serve__desc Совершайте платежи в приложении и получайте бонусы: 1% от суммы транзакции.
@@ -51,8 +59,10 @@ section.services
 						span Мониторинг операций
 					article.serve
 						figure.serve__illustration
-							picture
-								img(src="" alt="")
+							div.serve__phonepic
+								.phone
+									.phone__inner
+										img(src="images/screen-monitoring.png" alt="").serve__phonepic-screen
 						div.serve__content
 							h3.serve__title Мониторинг операций
 							p.serve__desc Вы можете отследить все ваши действия в приложении.
@@ -61,8 +71,10 @@ section.services
 						span Поддержка
 					article.serve
 						figure.serve__illustration
-							picture
-								img(src="" alt="")
+							div.serve__phonepic
+								.phone
+									.phone__inner
+										img(src="images/screen-support.png" alt="").serve__phonepic-screen
 						div.serve__content
 							h3.serve__title Поддержка
 							p.serve__desc 24/7 работает бесплатный колл-центр по номеру: 5000.

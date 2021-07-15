@@ -14,6 +14,6 @@ const tabsInit = function() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
-    accordionInit();    
+    accordionInit();
     tabsInit();
 });

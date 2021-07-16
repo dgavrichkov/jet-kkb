@@ -1,9 +1,18 @@
 .bonuses {
 	padding-top: 100px;
+	padding-bottom: 122px;
 	&__inner {
 
 	}
 	&__lead {
+		@include to(1024px) {
+			font-size: 36px;
+			line-height: 48px;
+		}
+		@include to(640px) {
+			font-size: 32px;
+			line-height: 40px;
+		}
 		font-size: 50px;
 		line-height: 66px;
 		font-weight: 400;
@@ -19,6 +28,13 @@
 		}
 	}
 	&__desc {
+		@include to(1024px) {
+			font-size: 18px;
+			line-height: 27px;
+		}
+		@include to(640px) {
+			
+		}
 		font-weight: normal;
 		font-size: 22px;
 		line-height: 33px;

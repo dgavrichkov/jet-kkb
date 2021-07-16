@@ -26,6 +26,9 @@
 		z-index: 2;
 	}
 	&__content {
+		@include from(1025px) {
+			align-self: center;
+		}
 		@include to(1024px) {
 			grid-column: 1 / 5;
 		}
@@ -35,6 +38,10 @@
 		grid-column: 1 / 6;
 	}
 	&__logo {
+		@include from(1025px) {
+			position: absolute;
+			top: 54px;
+		}
 		@include to(640px) {
 			display: flex;
 			justify-content: center;
@@ -45,6 +52,9 @@
 		width: 100%;
 	}
 	&__title {
+		@include from(1025px) {
+			margin-top: 0;
+		}
 		@include to(1024px) {
 			font-size: 52px;
 			line-height: 54px;

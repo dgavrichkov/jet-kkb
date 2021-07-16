@@ -58,7 +58,7 @@ export default class Tabs {
         this._setCaretState();
     }
     _handleMobControl(e) {
-        const screen = e.target.parentElement;
+        const screen = e.target.closest(".servtab__mobile-control").parentElement;
         const body = screen.querySelector(".serve");
         if(screen.classList.contains("is-active")) {
             body.style.height = "";

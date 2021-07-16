@@ -1,4 +1,12 @@
 .services {
+	@include to(1024px) {
+		padding-top: 63px;
+		padding-bottom: 20px;
+	}
+	@include to(640px) {
+		padding-top: 60px;
+		padding-bottom: 64px;
+	}
 	padding-top: 100px;
 	padding-bottom: 115px;
 	&__inner {
@@ -44,7 +52,7 @@
 		@include to(1024px) {
 			width: 647px;
 		}
-		@include to(640px) {
+		@include to(767px) {
 			display: none;
 		}
 		display: flex;
@@ -58,7 +66,6 @@
 
 		}
 		@include to(640px) {
-			
 		}
 		font-size: 16px;
 		line-height: 66px;
@@ -97,6 +104,7 @@
 
 		}
 		@include to(640px) {
+			margin-top: 0;
 			
 		}
 		margin-top: 42px;
@@ -106,7 +114,7 @@
 		@include to(1024px) {
 			
 		}
-		@include to(640px) {
+		@include to(767px) {
 			margin-bottom: 6px;
 			
 			.serve {
@@ -141,15 +149,19 @@
 				position: static;
 			}
 			@include to(767px) {
-				.servtab__mobile-control::after {
-					transform: rotate3d(1, 0, 0, 180deg);
+				.servtab__mobile-control {
+					background: #fff;
+					border-color: #05133D;
+					&::after {
+						transform: rotate3d(1, 0, 0, 180deg);
+					}
 				}
 			}
 			
 		}
 	}
 	&__mobile-control {
-		@include from(641px) {
+		@include from(768px) {
 			display: none;
 		}
 		border: 1px solid #F7F9FE;
@@ -163,6 +175,9 @@
 		display: flex;
 		align-items: center;
 		cursor: pointer;
+		span {
+			pointer-events: none;
+		}
 		&.is-active {
 			background: #fff;
 			border-color: #05133D;
@@ -192,11 +207,19 @@
 .serve {
 	@include to(1024px) {
 		gap: $gap-tablet;
+		height: 499px;
+	}
+	@include to(767px) {
+		grid-template-columns: 1fr;
+		gap: 32px;
+		height: auto;
 	}
 	@include to(640px) {
-		grid-template-columns: 1fr;
-		gap: $gap-mobile;
-		height: auto;
+		margin-left: -24px;
+		margin-right: -24px;
+	}
+	@include to(640px) {
+		
 	}
 	height: 699px;
 	overflow: hidden;
@@ -205,27 +228,48 @@
 	gap: $gap-desktop;
 	&__illustration {
 		@include to(1024px) {
-
+			height: 499px;
 		}
-		@include to(640px) {
+		@include to(768px) {
+			padding-left: 17px;
+		}
+		@include to(767px) {
 			height: auto;
 			padding: 0;
-			
+			padding-left: 44px;
+			padding-right: 24px;
+
+			grid-row: 2;
+
+			height: 450px;
+			overflow: hidden;
 		}
+		
 		position: relative;
 		padding-left: 21%;
 		height: 699px;
 		.video-preview {
+			@include to(768px) {
+				width: 75%;
+			}
+			@include to(767px) {
+				transform: none;
+				right: 24px;
+				width: 62%;
+				bottom: 20%;
+			}
 			position: absolute;
 			bottom: 25%;
 			right: 0;
 			z-index: 3;
 			transform: translateX(10%);
+			width: 58%;
 		}
 		
 		&::after {
-			@include to(640px) {
-				
+			@include to(768px) {
+				left: 0;
+				width: 200%;
 			}
 			content: "";
 			position: absolute;
@@ -238,6 +282,10 @@
 		}
 	}
 	.serve__addt-pic {
+		@include to(767px) {
+			right: 24px;
+			transform: none;
+		}
 		position: absolute;
 		bottom: 22%;
 		right: 0;
@@ -259,19 +307,30 @@
 		}
 	}
 	&__phonepic {
+		@include to(1024px) {
+			width: 86.5%;
+		}
 		width: 82.5%;
 		height: 100%;
 		position: relative;
 		
 	}
 	&__content {
+		@include to(768px) {
+			padding-right: 0;
+			padding-top: 54px;
+		}
+		@include to(767px) {
+			grid-row: 1;
+		}
 		@include to(640px) {
-			margin-top: 32px;
-			
+			padding: 32px 44px 0;
 		}
 		padding-top: 148px;
 		padding-left: 7%;
 		padding-right: 10%;
+		position: relative;
+		z-index: 2;
 	}
 	&__title {
 		@include to(1024px) {
@@ -291,6 +350,10 @@
 		margin-bottom: 18px;
 	}
 	&__desc {
+		@include to(1024px) {
+			font-size: 18px;
+			line-height: 27px;
+		}
 		font-weight: normal;
 		font-size: 22px;
 		line-height: 33px;

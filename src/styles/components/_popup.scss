@@ -8,6 +8,12 @@
     opacity: 0;
     pointer-events: none;
     visibility: hidden;
+    transition: .6s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: auto;
+    overscroll-behavior: contain;
     &__overlay {
         position: absolute;
         top: 0;
@@ -17,7 +23,25 @@
         cursor: pointer;
         background: rgba(4, 7, 16, 0.95);
     }
-
+    &__inner {
+        @media(max-width: 800px) {
+            width: 80%;
+        }
+        position: relative;
+        width: 62%;
+        &::before {
+            content: "";
+            display: block;
+            padding-top: 56%;
+        }
+        iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
     &.is-open {
         opacity: 1;
         pointer-events: all;

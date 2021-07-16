@@ -14,11 +14,21 @@ const tabsInit = function() {
     tabsComp.init();
 }
 
+const popupsInit = function() {
+    const popups = document.querySelectorAll(".popup");
+    popups.forEach(pop => {
+        const name = pop.dataset.videoPopup;
+        const trigger = document.querySelector(`.video-preview[data-video-popup="${name}"]`);
+        const popupComp = new Popup(pop);
+        popupComp.init();
+        trigger.addEventListener("click", () => {
+            popupComp.open();
+        });
+    })
+}
+
 document.addEventListener("DOMContentLoaded", function() {
-    const popupEl = document.querySelector(".popup");
-    window.popup = new Popup(popupEl);
-    window.popup.init();
-    
     accordionInit();
     tabsInit();
+    popupsInit();
 });

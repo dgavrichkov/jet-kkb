@@ -1,6 +1,7 @@
 import Accordeon from "./modules/Accordeon";
 import Tabs from "./modules/Tabs";
 import Popup from "./modules/Popup";
+import Presentation from "./modules/Presentation";
 
 const accordionInit = function() {
     const accordeon = document.querySelector(".accordeon");
@@ -27,8 +28,16 @@ const popupsInit = function() {
     })
 }
 
+const initPresentation = function() {
+    const block = document.querySelector(".how-it");
+    const presentation = new Presentation(block);
+    presentation.init();
+};
+
+
 document.addEventListener("DOMContentLoaded", function() {
     accordionInit();
     tabsInit();
     popupsInit();
+    initPresentation();
 });

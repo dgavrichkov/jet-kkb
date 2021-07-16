@@ -1,7 +1,16 @@
 .how-it {
+	height: 600vh;
 	background: #F7F9FE;
-	padding-top: 90px;
-	padding-bottom: 140px;
+	overflow: visible;
+	&__box {
+		min-height: 800px;
+		height: 100vh;
+		position: sticky;
+		top: 0;
+		overflow: hidden;
+		padding-top: 90px;
+		padding-bottom: 140px;
+	}
 	&__inner {
 		@include to(1024px) {
 
@@ -36,26 +45,43 @@
 	}
 	&__content {
 		@include to(1024px) {
-
+			grid-template-columns: repeat(8, 1fr);
+			gap: $gap-tablet;
 		}
 		@include to(640px) {
-			
+			grid-template-columns: repeat(4, 1fr);
+			gap: 56px;
 		}
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: $gap-desktop;
 	}
 	&__text {
 		@include to(1024px) {
-
+			grid-column: 1 / span 5;
 		}
 		@include to(640px) {
-			
+			grid-column: 1 / -1;
+		}
+		grid-column: 1 / span 7;
+	}
+	&__item {
+		display: flex;
+		&.is-active {
+
+		}
+		&.is-seen {
+			.how-it__count-bar {
+				background-color: #05133D;
+			}
 		}
 	}
-	&__text-item {
-		display: flex;
-	}
-
-	&__text-count {
+	&__count {
 		margin-right: 36px;
+		display: flex;
+		flex-direction: column;
+	}
+	&__count-icon {
 		width: 46px;
 		height: 46px;
 		color: #fff;
@@ -63,6 +89,7 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		flex-shrink: 0;
 		span {
 			position: relative;
 			z-index: 2;
@@ -78,6 +105,13 @@
 			height: 100%;
 		}
 	}
+	&__count-bar {
+		height: 100%;
+		min-height: 27px;
+		width: 2px;
+		margin: 10px auto;
+		background: #B5BBC9;
+	}
 	&__text-item {
 		@include to(1024px) {
 			font-size: 15px;
@@ -91,6 +125,7 @@
 		font-size: 18px;
 		line-height: 26px;
 		font-weight: 400;
+		padding-bottom: 41px;
 		b {
 			font-weight: 900;
 		}
@@ -102,5 +137,22 @@
 		@include to(640px) {
 			
 		}
+	}
+	&__phone {
+		@include to(1024px) {
+			grid-column: span 3 / -1;
+			transform: translateX(0);
+			margin-left: -16px;
+		}
+		@include to(640px) {
+			grid-column: 1 / -1;
+			margin: 0 auto;
+			width: 50%;
+			min-width: 234px;
+		}
+		grid-column: span 4 / -1;
+		transform: translateX(-24px);
+		max-width: 375px;
+		margin-top: -170px;
 	}
 }

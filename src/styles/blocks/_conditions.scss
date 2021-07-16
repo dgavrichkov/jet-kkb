@@ -1,4 +1,5 @@
 .conditions {
+	padding-bottom: 70px;
 	&__inner {
 		@include to(1024px) {
 			grid-template-columns: repeat(2, 1fr);

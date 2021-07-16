@@ -1,5 +1,6 @@
 import Accordeon from "./modules/Accordeon";
 import Tabs from "./modules/Tabs";
+import Popup from "./modules/Popup";
 
 const accordionInit = function() {
     const accordeon = document.querySelector(".accordeon");
@@ -14,6 +15,10 @@ const tabsInit = function() {
 }
 
 document.addEventListener("DOMContentLoaded", function() {
+    const popupEl = document.querySelector(".popup");
+    window.popup = new Popup(popupEl);
+    window.popup.init();
+    
     accordionInit();
     tabsInit();
 });

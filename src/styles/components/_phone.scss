@@ -1,4 +1,7 @@
 .phone {
+	@include to(768px) {
+		border-radius: 30.1426px;
+	}
 	// padding-bottom: 202.17%;
 	background: #F3F5F7;
 	box-shadow: 37.1021px 55.6532px 74.2043px rgba(62, 68, 128, 0.25), inset -4.70347px -12.0946px 18.5511px rgba(102, 131, 188, 0.25), inset 9.27553px 1.85511px 18.5511px #FFFFFF;
@@ -6,6 +9,13 @@
 	overflow: hidden;
 	position: relative;
 	&__inner {
+		@include to(768px) {
+			width: calc(100% - 18px);
+			height: calc(100% - 16px);
+			left: 9px;
+			top: 8px;
+			border-radius: 30.1426px;
+		}
 		border-radius: 46.3777px;
 		overflow: hidden;
 		width: calc(100% - 28px);
@@ -14,23 +24,6 @@
 		position: absolute;
 		left: 14px;
 		top: 12px;
-		// &::before {
-		// 	content: "";
-		// 	display: block;
-		// 	height: 81px;
-		// 	background: url(../images/phone-index-head.png) no-repeat;
-		// 	background-color: #0068FF;
-		// 	background-size: 98% auto;
-		// }
-		// &::after {
-		// 	content: "";
-		// 	display: block;
-		// 	height: 47px;
-		// 	background: url(../images/phone-index-bottom.png) no-repeat;
-		// 	background-size: 98% auto;
-		// 	background-position-x: center;
-		// 	background-color: #fff;
-		// }
         .serve__phonepic-screen {
             width: 100%;
             height: 100%;
@@ -38,7 +31,8 @@
 	}
 	&__content {
 		display: block;
-		height: calc(100% - 81px - 47px);
+		// height: calc(100% - 81px - 47px);
+		height: 100%;
 		overflow: auto;
 		overscroll-behavior: contain;
 		background: #fff;
@@ -60,4 +54,48 @@
         display: block;
         padding-bottom: 208%;
     }
+	&__head {
+		background: #0068FF;
+		position: relative;
+
+		&::before {
+			content: "";
+			display: block;
+			padding-top: 26%;
+		}
+		img {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__footer {
+		width: 100%;
+		background: #fff;
+		position: relative;
+		padding: 0 10px;
+		filter: drop-shadow(0px -1.97778px 7.91111px rgba(3, 21, 61, 0.1));
+		&::before {
+			content: "";
+			display: block;
+			padding-top: 14%;
+		}
+		img {
+			width: 100%;
+			height: 100%;
+			position: absolute;
+			top: 0;
+			left: 0;
+		}
+	}
+	&--scroll {
+		.phone__inner {
+			display: grid;
+			grid-template-columns: 1fr;
+			grid-template-rows: auto 1fr auto;
+		}
+	}
 }

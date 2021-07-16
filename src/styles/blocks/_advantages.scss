@@ -1,5 +1,11 @@
 .advantages {
+	@include to(640px) {
+		padding-bottom: 86px;
+		padding-top: 72px;
+	}
+	
 	padding: 133px 0 141px;
+
 	&__inner {
 		@include to(1024px) {
 			grid-template-columns: repeat(8, 1fr);
@@ -7,7 +13,7 @@
 		}
 		@include to(640px) {
 			grid-template-columns: repeat(4, 1fr);
-			gap: $gap-mobile;
+			gap: 56px;
 		}
 		display: grid;
 		grid-template-columns: repeat(12, 1fr);
@@ -16,6 +22,9 @@
 	&__content {
 		@include to(1024px) {
 			grid-column: 1 / span 5;
+		}
+		@include to(640px) {
+			grid-column: 1 / -1;
 		}
 		grid-column: 1 / span 7;
 	}
@@ -131,7 +140,10 @@
 			margin-left: -16px;
 		}
 		@include to(640px) {
-			
+			grid-column: 1 / -1;
+			margin: 0 auto;
+			width: 50%;
+			min-width: 234px;
 		}
 		grid-column: span 4 / -1;
 		transform: translateX(-24px);

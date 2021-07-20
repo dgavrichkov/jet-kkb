@@ -1,3 +1,5 @@
+import debounce from "../import/debounce";
+
 export default class Presentation {
     constructor(el) {
         this._el = el;
@@ -36,21 +38,7 @@ export default class Presentation {
         const num = this._items.length;
         this._heightModifier = elHeight / boxHeight * num * 1.5;
     }
-    _setCurrent(item) {
-        // если текущий уже есть.
-        if(this._current) {
-            // снять класс актива
-            this._current.classList.remove("is-active");
-            // добавить класс просмотрено
-            this._current.classList.add("is-seen");
-        }
-        // засовываем в текущий переданный элемент
-        this._current = item;
-        // присваиваем ему класс активности
-        this._current.classList.add("is-active");
-        // обновляем текущую высоту блока. height - число неизменное.
-        this._currentHeight = parseInt(this._current.style.height);
-    }
+    
     // проходит по списку элементов и вычисляет их высоты
     _setInitialHeight() {
         let base = window.innerHeight / 1.5;
@@ -63,7 +51,25 @@ export default class Presentation {
             count++;
         });
     }
-
+    _setCurrent(item, isPrev) {
+        // если текущий уже есть.
+        if(this._current) {
+            // снять класс актива
+            this._current.classList.remove("is-active");
+            // добавить класс просмотрено
+            this._current.classList.add("is-seen");
+        }
+        // засовываем в текущий переданный элемент
+        this._current = item;
+        // присваиваем ему класс активности
+        this._current.classList.add("is-active");
+        // обновляем текущую высоту блока. height - число неизменное.
+        if(isPrev) {
+            this._currentHeight = this._heightMin;
+        } else {
+            this._currentHeight = parseInt(this._current.style.height);
+        }
+    }
     _setIntersectionObserver() {
         const options = {
             root: null,
@@ -85,7 +91,8 @@ export default class Presentation {
     }
 
     _setScrollingHandler() {
-        window.addEventListener("scroll", this._handleScroll);
+        const optimizedHandler = debounce(this._handleScroll, 0.1);
+        window.addEventListener("scroll", optimizedHandler);
     }
 
     _handleScroll(e) {
@@ -102,13 +109,10 @@ export default class Presentation {
                     this._current.style.maxHeight = `${this._currentHeight}px`;
                 }
                 
-                
                 // если вычисленная высота меньше либо равна минимальной, то переносим активность на следующий элемент 
                 if(dif <= this._heightMin && this._current.nextElementSibling) {
-                    console.log("turn to next el");
                     this._setCurrent(this._current.nextElementSibling);
                 }
-                console.log(this._currentHeight);
             }
         } else {
             // up
@@ -118,20 +122,14 @@ export default class Presentation {
                 if(this._current.dataset.maxHeight >= dif) {
                     this._currentHeight = dif;
                     this._current.style.maxHeight = `${this._currentHeight}px`;
-                }
-                // если у нас есть предыдущий элемент и разницы превысила максимальную высоту элемента, мы можем перейти
-                if(dif > this._current.dataset.maxHeight && this._current.previousElementSibling) {
-                    console.log("turn to prev el");
-                    this._setCurrent(this._current.previousElementSibling); 
-                }
 
-                // а почему это срабатывает несколько раз кряду, 
-                console.log(this._currentHeight);
+                } else if(dif > this._current.dataset.maxHeight && this._current.previousElementSibling) {
+                    // если у нас есть предыдущий элемент и разницы превысила максимальную высоту элемента, мы можем перейти
+                    this._setCurrent(this._current.previousElementSibling, true);
+                }
             }
         }
         this._scrollPos = st;
-
-        // console.log(this._currentHeight, this._current);
     }
 
     // set current screen on phone

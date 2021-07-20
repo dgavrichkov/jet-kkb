@@ -4,7 +4,10 @@ export default class Popup {
         this._overlay = this._el.querySelector(".popup__overlay");
 
         this._handleOverlayClick = this._handleOverlayClick.bind(this);
-        this._video = this._el.querySelector("iframe").contentWindow;
+        this._frame = this._el.querySelector("iframe");
+        if(this._frame) {
+            this._video = this._frame.contentWindow;
+        }
     }
     init() {
         this._setOverlayClosing();

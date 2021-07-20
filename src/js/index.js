@@ -36,8 +36,13 @@ const initPresentation = function() {
 
 
 document.addEventListener("DOMContentLoaded", function() {
+    // window.scrollTo(0, 0);
     accordionInit();
     tabsInit();
     popupsInit();
     initPresentation();
 });
+
+window.onbeforeunload = function () { 
+    window.scrollTo(0,0) 
+};

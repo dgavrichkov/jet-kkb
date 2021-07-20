@@ -10,6 +10,8 @@
 		overflow: hidden;
 		padding-top: 90px;
 		padding-bottom: 140px;
+
+		border: 3px solid purple;
 	}
 	&__inner {
 	}
@@ -75,6 +77,10 @@
 			.how-it__count-bar {
 				background-color: #05133D;
 			}
+		}
+
+		&.is-active {
+			outline: 4px solid orange;
 		}
 	}
 	&__count {

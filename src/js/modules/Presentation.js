@@ -7,6 +7,8 @@ export default class Presentation {
         this._itemsContainer = this._items[0].parentElement;
         this._screens = this._el.querySelectorAll("[data-presentation-screen]");
 
+        this._wrapper = this._el.querySelector(".how-it__content");
+
         this._elTopPos = null;
 
         this._current = null;
@@ -17,6 +19,9 @@ export default class Presentation {
         this._heightModifier = 0;
         this._heightMin = 100;
 
+        this._swiperOptions = {
+            slidesPerView: 1,
+        };
         this._swiper = null;
 
         this._handleScroll = this._handleScroll.bind(this);
@@ -24,11 +29,20 @@ export default class Presentation {
     init() {
         this._setInitialHeight();
         this._setIntersectionObserver();
-        this._setScrollingHandler();
         this._setStep();
+        this._setResizeHandler();
+        this._setSwiper();
+        this._setScrollingHandler();
+
         // позиция начала блока
         this._elTopPos = this._el.getBoundingClientRect().top + pageYOffset;
-        console.log(this._elTopPos);
+    }
+    _setResizeHandler() {
+        window.addEventListener("resize", () => {
+            
+            this._setInitialHeight();
+            this._setSwiper();
+        });
     }
     _setStep() {
         // console.log(this._el.scrollHeight, this._itemsContainer.scrollHeight);
@@ -40,15 +54,23 @@ export default class Presentation {
     
     // проходит по списку элементов и вычисляет их высоты
     _setInitialHeight() {
-        let base = window.innerHeight / 1.5;
-        let count = 1;
-        this._items.forEach(item => {
-            const mod = count % 2 ? 100 : 72;
-            base = base - mod;
-            item.style.height = Math.floor(base) + "px";
-            item.dataset.maxHeight = Math.floor(base);
-            count++;
-        });
+        if(window.innerWidth > 641) {
+            let base = window.innerHeight / 1.5;
+            let count = 1;
+            this._items.forEach(item => {
+                const mod = count % 2 ? 100 : 72;
+                base = base - mod;
+                item.style.height = Math.floor(base) + "px";
+                item.dataset.maxHeight = Math.floor(base);
+                count++;
+            });
+        } else {
+            this._items.forEach(item => {
+                item.style.height = "";
+                item.dataset.maxHeight = "";
+            })
+        }
+        
     }
     _setCurrent(item, isPrev) {
         // если текущий уже есть.
@@ -81,11 +103,15 @@ export default class Presentation {
             threshold: 1
         };
         const callback = (entries) => {
+            if(window.innerWidth <= 640) {
+                return false;
+            }
             entries.forEach(entry => {
                 const {isIntersecting, intersectionRatio} = entry;
                 if(isIntersecting && intersectionRatio === 1) {
                     if(!this._current) {
                         this._setCurrent(this._items[0]);
+                        // document.body.classList.add("modal-open");
                     }
                 }
             })
@@ -103,7 +129,29 @@ export default class Presentation {
         this._current.style.maxHeight = `${this._currentHeight}px`;
     }
 
+    _setSwiper() {
+        if(window.innerWidth <= 640) {
+            this._wrapper.classList.add("swiper-container");
+            this._itemsContainer.classList.add("swiper-wrapper");
+            this._items.forEach(item => {
+                item.classList.add("swiper-slide");
+            })
+
+            this._swiper = new Swiper(this._wrapper, this._swiperOptions);
+
+            this._swiper.on("slideChange", () => {
+                const activeSlide = this._swiper.slides[this._swiper.activeIndex];
+                this._setCurrent(activeSlide);
+            });
+
+            this._setCurrent(this._items[0]);
+        }
+    }
+
     _handleScroll(e) {
+        if(window.innerWidth <= 640) {
+            return false;
+        }
         let st = window.pageYOffset;
         if(st > this._scrollPos) {
             // down

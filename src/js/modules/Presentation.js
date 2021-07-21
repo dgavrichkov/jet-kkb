@@ -1,5 +1,3 @@
-import debounce from "../import/debounce";
-
 export default class Presentation {
     constructor(el) {
         this._el = el;
@@ -29,7 +27,8 @@ export default class Presentation {
         this._setScrollingHandler();
         this._setStep();
         // позиция начала блока
-        // this._elTopPos = this._el.getBoundingClientRect().top + pageYOffset;
+        this._elTopPos = this._el.getBoundingClientRect().top + pageYOffset;
+        console.log(this._elTopPos);
     }
     _setStep() {
         // console.log(this._el.scrollHeight, this._itemsContainer.scrollHeight);
@@ -58,6 +57,7 @@ export default class Presentation {
             this._current.classList.remove("is-active");
             // добавить класс просмотрено
             this._current.classList.add("is-seen");
+            this._currentScreen.classList.remove("is-active");
         }
         // засовываем в текущий переданный элемент
         this._current = item;
@@ -69,6 +69,11 @@ export default class Presentation {
         } else {
             this._currentHeight = parseInt(this._current.style.height);
         }
+
+        // надо обновить скрин
+        const name = this._current.dataset.presentationItem;
+        this._currentScreen = this._el.querySelector(`[data-presentation-screen="${name}"]`);
+        this._currentScreen.classList.add("is-active");
     }
     _setIntersectionObserver() {
         const options = {
@@ -81,7 +86,6 @@ export default class Presentation {
                 if(isIntersecting && intersectionRatio === 1) {
                     if(!this._current) {
                         this._setCurrent(this._items[0]);
-                        // console.log(this._current, this._currentHeight)
                     }
                 }
             })
@@ -91,8 +95,12 @@ export default class Presentation {
     }
 
     _setScrollingHandler() {
-        const optimizedHandler = debounce(this._handleScroll, 0.1);
-        window.addEventListener("scroll", optimizedHandler);
+        window.addEventListener("scroll", this._handleScroll);
+    }
+    // обновляет значение текущей высоты и записывает в стайл текущего элемента
+    _setCurrentHeight(val) {
+        this._currentHeight = val;
+        this._current.style.maxHeight = `${this._currentHeight}px`;
     }
 
     _handleScroll(e) {
@@ -100,13 +108,17 @@ export default class Presentation {
         if(st > this._scrollPos) {
             // down
             if(this._current) {
+                // определенно надо что-то менять в вычислении новой высоты. Она должна зависеть от текущей прокрутки.
+
                 let dif = this._currentHeight - this._heightModifier;
+                // let dif = window.scrollY - this._elTopPos;
+                
+                console.log(window.pageYOffset - this._elTopPos);
                 
                 if(this._current.nextElementSibling && dif > this._heightMin) {
                     // текущая высота изменяется только если у элемента есть следующий элемент и если больше чем минимальная
                     // тобишь последний элемент мы вовсе не трогаем.
-                    this._currentHeight = dif;
-                    this._current.style.maxHeight = `${this._currentHeight}px`;
+                    this._setCurrentHeight(dif);
                 }
                 
                 // если вычисленная высота меньше либо равна минимальной, то переносим активность на следующий элемент 
@@ -120,9 +132,7 @@ export default class Presentation {
                 let dif = this._currentHeight + this._heightModifier;
                 // высота может увеличиваться, только если максимальная высота больше полученной разницы
                 if(this._current.dataset.maxHeight >= dif) {
-                    this._currentHeight = dif;
-                    this._current.style.maxHeight = `${this._currentHeight}px`;
-
+                    this._setCurrentHeight(dif);
                 } else if(dif > this._current.dataset.maxHeight && this._current.previousElementSibling) {
                     // если у нас есть предыдущий элемент и разницы превысила максимальную высоту элемента, мы можем перейти
                     this._setCurrent(this._current.previousElementSibling, true);

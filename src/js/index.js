@@ -2,6 +2,7 @@ import Accordeon from "./modules/Accordeon";
 import Tabs from "./modules/Tabs";
 import Popup from "./modules/Popup";
 import Presentation from "./modules/Presentation";
+import Bonuses from "./modules/Bonuses";
 
 const accordionInit = function() {
     const accordeon = document.querySelector(".accordeon");
@@ -34,9 +35,14 @@ const initPresentation = function() {
     presentation.init();
 };
 
+const bonusesInit = function() {
+    const block = document.querySelector(".bonuses");
+    const comp = new Bonuses(block);
+    comp.init();
+}
 
 document.addEventListener("DOMContentLoaded", function() {
-    // window.scrollTo(0, 0);
+    bonusesInit();
     accordionInit();
     tabsInit();
     popupsInit();

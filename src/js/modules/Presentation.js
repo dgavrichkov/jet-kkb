@@ -27,6 +27,8 @@ export default class Presentation {
         this._handleScroll = this._handleScroll.bind(this);
     }
     init() {
+        this._current = Array.from(this._items).find(item => item.classList.contains("is-active"));
+        this._currentScreen = Array.from(this._screens).find(screen => screen.classList.contains("is-active"));
         // this._setInitialHeight();
         this._setIntersectionObserver();
         this._setStep();
@@ -39,13 +41,11 @@ export default class Presentation {
     }
     _setResizeHandler() {
         window.addEventListener("resize", () => {
-            
-            this._setInitialHeight();
+            // this._setInitialHeight();
             this._setSwiper();
         });
     }
     _setStep() {
-        // console.log(this._el.scrollHeight, this._itemsContainer.scrollHeight);
         const elHeight = this._el.scrollHeight;
         const boxHeight = this._itemsContainer.scrollHeight;
         const num = this._items.length;
@@ -143,9 +143,17 @@ export default class Presentation {
             })
 
             this._swiper = new Swiper(this._wrapper, this._swiperOptions);
-
             this._swiper.on("slideChangeTransitionEnd", () => {
-
+                const active = this._swiper.slides[this._swiper.realIndex];
+                const name = active.dataset.presentationItem;
+                if(this._currentScreen) {
+                    this._currentScreen.classList.remove("is-active");
+                    this._current.classList.remove("is-active");
+                }
+                this._current = active;
+                this._currentScreen = Array.from(this._screens).find(screen => screen.dataset.presentationScreen === name);
+                this._currentScreen.classList.add("is-active");
+                this._current.classList.add("is-active");
             });
         }
     }
@@ -159,8 +167,6 @@ export default class Presentation {
             if(this._current) {
                 // определенно надо что-то менять в вычислении новой высоты. Она должна зависеть от текущей прокрутки.
                 let dif = this._currentHeight - this._heightModifier;
-                console.log(window.pageYOffset - this._elTopPos);
-                
                 if(this._current.nextElementSibling && dif > this._heightMin) {
                     // текущая высота изменяется только если у элемента есть следующий элемент и если больше чем минимальная
                     // тобишь последний элемент мы вовсе не трогаем.
@@ -187,13 +193,4 @@ export default class Presentation {
         }
         this._scrollPos = st;
     }
-
-    // set current screen on phone
-
-    // bind scroll to current block height
-
-    // swiper slider on mobile
-    // -- set classes to markup
-    // -- init slider
-    // -- resize event - init and destroy swiper
 }

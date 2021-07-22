@@ -27,15 +27,15 @@ export default class Presentation {
         this._handleScroll = this._handleScroll.bind(this);
     }
     init() {
-        this._setInitialHeight();
+        // this._setInitialHeight();
         this._setIntersectionObserver();
         this._setStep();
         this._setResizeHandler();
         this._setSwiper();
-        this._setScrollingHandler();
+        this._setItemClickHandler();
 
         // позиция начала блока
-        this._elTopPos = this._el.getBoundingClientRect().top + pageYOffset;
+        // this._elTopPos = this._el.getBoundingClientRect().top + pageYOffset;
     }
     _setResizeHandler() {
         window.addEventListener("resize", () => {
@@ -50,8 +50,7 @@ export default class Presentation {
         const boxHeight = this._itemsContainer.scrollHeight;
         const num = this._items.length;
         this._heightModifier = elHeight / boxHeight * num * 1.5;
-    }
-    
+    } 
     // проходит по списку элементов и вычисляет их высоты
     _setInitialHeight() {
         if(window.innerWidth > 641) {
@@ -85,12 +84,13 @@ export default class Presentation {
         this._current = item;
         // присваиваем ему класс активности
         this._current.classList.add("is-active");
+        
         // обновляем текущую высоту блока. height - число неизменное.
-        if(isPrev) {
-            this._currentHeight = this._heightMin;
-        } else {
-            this._currentHeight = parseInt(this._current.style.height);
-        }
+        // if(isPrev) {
+        //     this._currentHeight = this._heightMin;
+        // } else {
+        //     this._currentHeight = parseInt(this._current.style.height);
+        // }
 
         // надо обновить скрин
         const name = this._current.dataset.presentationItem;
@@ -111,7 +111,6 @@ export default class Presentation {
                 if(isIntersecting && intersectionRatio === 1) {
                     if(!this._current) {
                         this._setCurrent(this._items[0]);
-                        // document.body.classList.add("modal-open");
                     }
                 }
             })
@@ -119,7 +118,6 @@ export default class Presentation {
         const observer = new IntersectionObserver(callback, options);
         observer.observe(this._box);
     }
-
     _setScrollingHandler() {
         window.addEventListener("scroll", this._handleScroll);
     }
@@ -127,6 +125,13 @@ export default class Presentation {
     _setCurrentHeight(val) {
         this._currentHeight = val;
         this._current.style.maxHeight = `${this._currentHeight}px`;
+    }
+    _setItemClickHandler() {
+        this._items.forEach(item => {
+            item.addEventListener("click", () => {
+                this._setCurrent(item);
+            });
+        });
     }
 
     _setSwiper() {
@@ -139,16 +144,12 @@ export default class Presentation {
 
             this._swiper = new Swiper(this._wrapper, this._swiperOptions);
 
-            this._swiper.on("slideChange", () => {
-                const activeSlide = this._swiper.slides[this._swiper.activeIndex];
-                this._setCurrent(activeSlide);
-            });
+            this._swiper.on("slideChangeTransitionEnd", () => {
 
-            this._setCurrent(this._items[0]);
+            });
         }
     }
-
-    _handleScroll(e) {
+    _handleScroll() {
         if(window.innerWidth <= 640) {
             return false;
         }
@@ -157,10 +158,7 @@ export default class Presentation {
             // down
             if(this._current) {
                 // определенно надо что-то менять в вычислении новой высоты. Она должна зависеть от текущей прокрутки.
-
                 let dif = this._currentHeight - this._heightModifier;
-                // let dif = window.scrollY - this._elTopPos;
-                
                 console.log(window.pageYOffset - this._elTopPos);
                 
                 if(this._current.nextElementSibling && dif > this._heightMin) {

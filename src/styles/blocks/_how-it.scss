@@ -2,7 +2,7 @@
 	@include to(640px) {
 		height: auto;
 	}
-	height: 600vh;
+	height: 100vh;
 	background: #F7F9FE;
 	overflow: visible;
 	&__box {
@@ -18,7 +18,7 @@
 		}
 		min-height: 800px;
 		height: 100vh;
-		position: sticky;
+		// position: sticky;
 		top: 0;
 		overflow: hidden;
 		padding-top: 90px;
@@ -85,6 +85,7 @@
 			padding: 0 24px;
 		}
 		display: flex;
+		cursor: pointer;
 		&.is-active,
 		&.is-seen {
 			.how-it__text-item {
@@ -99,21 +100,21 @@
 				background-color: #05133D;
 			}
 		}
-		&.is-active + & {
-			@include from(641px) {
-				.how-it__text-item {
-					color: $ca;
-				}
-				.how-it__count-icon {
-					path {
-						fill: $ca;
-					}
-				}
-				.how-it__count-bar {
-					background-color: #05133D;
-				}
-			}
-		}
+		// &.is-active + & {
+		// 	@include from(641px) {
+		// 		.how-it__text-item {
+		// 			color: $ca;
+		// 		}
+		// 		.how-it__count-icon {
+		// 			path {
+		// 				fill: $ca;
+		// 			}
+		// 		}
+		// 		.how-it__count-bar {
+		// 			background-color: #05133D;
+		// 		}
+		// 	}
+		// }
 	}
 	&__count {
 		@include to(640px) {
@@ -197,14 +198,6 @@
 			font-weight: 900;
 		}
 	}
-	&__screens {
-		@include to(1024px) {
-
-		}
-		@include to(640px) {
-			
-		}
-	}
 	&__phone {
 		@include to(1024px) {
 			grid-column: span 3 / -1;
@@ -250,9 +243,7 @@
 		left: 0;
 		opacity: 0;
 		transition: opacity 0.3s linear;
-		&:first-child {
-			opacity: 1;
-		}
+
 		&.is-active {
 			opacity: 1;
 			z-index: 2;

@@ -6,15 +6,16 @@ section.services
 				div.servtab__controls
 					div.is-active.servtab__control(data-tab-control="transactions") Переводы
 					div.servtab__control(data-tab-control="payment") Оплата услуг
-					div.servtab__control(data-tab-control="bonus") Бонусная система
 					div.servtab__control(data-tab-control="monitor") Мониторинг операций
+					div.servtab__control(data-tab-control="bonus") Бонусы
+					div.servtab__control(data-tab-control="departments") Отделения и банкоматы
 					div.servtab__control(data-tab-control="support") Поддержка
 					div.servtab__indicator
 						div.servtab__indicator-caret
 			ul.servtab__content
 				li.servtab__screen(data-tab-screen="transactions")
 					div.servtab__mobile-control
-						span Переводы
+						span Переводы с карты на карту 
 					article.serve
 						figure.serve__illustration
 							div.serve__phonepic
@@ -24,8 +25,8 @@ section.services
 							div.video-preview.js-video-popup(data-video-popup="1")
 								img(src="images/transaction-preview.png" alt="")
 						div.serve__content
-							h3.serve__title Переводы
-							p.serve__desc Легкие переводы с карты на карту любого банка мира (VISA и MasterCard).
+							h3.serve__title Переводы с карты на карту 
+							p.serve__desc Отправляйте деньги в любой банк мира (VISA и MasterCard).
 				li.servtab__screen(data-tab-screen="payment")
 					div.servtab__mobile-control
 						span Оплата услуг
@@ -39,21 +40,8 @@ section.services
 								img(src="images/payment-preview.png" alt="")
 						div.serve__content
 							h3.serve__title Оплата услуг
-							p.serve__desc Оплачивайте услуги в приложении KKB без комиссии и получайте бонусы.
-				li.servtab__screen(data-tab-screen="bonus")
-					div.servtab__mobile-control
-						span Бонусная система
-					article.serve
-						figure.serve__illustration
-							div.serve__phonepic
-								.phone
-									.phone__inner
-										img(src="images/screen-bonuses.png" alt="").serve__phonepic-screen
-							div.serve__addt-pic
-								img(src="images/bonuses-pocket.png")
-						div.serve__content
-							h3.serve__title Бонусная система
-							p.serve__desc Совершайте платежи в приложении и получайте бонусы: 1% от суммы транзакции.
+							p.serve__desc Оплачивайте мобильную связь, коммунальные платежи, штрафы и другие услуги без комиссии.
+				
 				li.servtab__screen(data-tab-screen="monitor")
 					div.servtab__mobile-control 
 						span Мониторинг операций
@@ -64,8 +52,34 @@ section.services
 									.phone__inner
 										img(src="images/screen-monitoring.png" alt="").serve__phonepic-screen
 						div.serve__content
-							h3.serve__title Мониторинг операций
-							p.serve__desc Вы можете отследить все ваши действия в приложении.
+							h3.serve__title Мониторинг операций по карте
+							p.serve__desc Отслеживайте в приложении все ваши действия по картам.
+				li.servtab__screen(data-tab-screen="bonus")
+					div.servtab__mobile-control
+						span Бонусы
+					article.serve
+						figure.serve__illustration
+							div.serve__phonepic
+								.phone
+									.phone__inner
+										img(src="images/screen-bonuses.png" alt="").serve__phonepic-screen
+							div.serve__addt-pic
+								img(src="images/bonuses-pocket.png")
+						div.serve__content
+							h3.serve__title Бонусы
+							p.serve__desc Совершайте платежи и получайте 1% от суммы транзакции бонусом.
+				li.servtab__screen(data-tab-screen="departments")
+					div.servtab__mobile-control 
+						span Отделения и банкоматы
+					article.serve
+						figure.serve__illustration
+							div.serve__phonepic
+								.phone
+									.phone__inner
+										img(src="images/screen-monitoring.png" alt="").serve__phonepic-screen
+						div.serve__content
+							h3.serve__title Отделения и банкоматы
+							p.serve__desc Найдите ближайшее удобное отделение вашего банка в приложении.
 				li.servtab__screen(data-tab-screen="support")
 					div.servtab__mobile-control 
 						span Поддержка
@@ -77,4 +91,4 @@ section.services
 										img(src="images/screen-support.png" alt="").serve__phonepic-screen
 						div.serve__content
 							h3.serve__title Поддержка
-							p.serve__desc 24/7 работает бесплатный колл-центр по номеру: 5000.
+							p.serve__desc 24/7 работает бесплатный колл-центр по номеру 5000.

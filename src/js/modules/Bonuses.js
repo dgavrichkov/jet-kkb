@@ -12,7 +12,7 @@ export default class Bonuses {
     _setIntersectionObserver() {
         const options = {
             root: null,
-            threshold: 1
+            threshold: 0.8
         };
         const callback = (entries) => {
             if(window.innerWidth < 768) {

@@ -44,7 +44,7 @@ export default class Tabs {
         this._currentScreen = this._el.querySelector(`[data-tab-screen="${name}"]`);
         this._currentScreen.classList.add("is-active");
 
-        if(window.innerWidth < 768) {
+        if(window.innerWidth < 769) {
             const body =  this._currentScreen.querySelector(".serve");
             body.style.height = body.scrollHeight + "px";
         }

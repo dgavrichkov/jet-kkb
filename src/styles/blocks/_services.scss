@@ -9,9 +9,6 @@
 	}
 	padding-top: 100px;
 	padding-bottom: 115px;
-	&__inner {
-		
-	}
 	&__title {
 		@include to(1024px) {
 			margin-bottom: 26px;
@@ -50,23 +47,19 @@
 	}
 	&__controls {
 		@include to(1024px) {
-			width: 647px;
+			// width: 647px;
+			width: 100%;
 		}
-		@include to(767px) {
+		@include to(768px) {
 			display: none;
 		}
 		display: flex;
 		justify-content: space-between;
 		position: relative;
-		width: 825px;
+		width: 925px;
 		max-width: 100%;
 	}
 	&__control {
-		@include to(1024px) {
-
-		}
-		@include to(640px) {
-		}
 		font-size: 16px;
 		line-height: 66px;
 		color: rgba(5, 19, 61, 0.27);
@@ -86,12 +79,6 @@
 		left: 0;
 	}
 	&__indicator-caret {
-		@include to(1024px) {
-
-		}
-		@include to(640px) {
-			
-		}
 		position: absolute;
 		width: 50px;
 		height: 2px;
@@ -100,9 +87,6 @@
 		transition: left 0.4s ease-in-out, width 0.5s ease-in-out;
 	}
 	&__content {
-		@include to(1024px) {
-
-		}
 		@include to(640px) {
 			margin-top: 0;
 			
@@ -111,10 +95,7 @@
 		position: relative;
 	}
 	&__screen {
-		@include to(1024px) {
-			
-		}
-		@include to(767px) {
+		@include to(768px) {
 			margin-bottom: 6px;
 			
 			.serve {
@@ -123,7 +104,7 @@
 				transition: height .6s;
 			}
 		}
-		@include from(768px) {
+		@include from(769px) {
 			opacity: 0;
 			pointer-events: none;
 			transition: opacity 0.6s ease-in-out;
@@ -132,7 +113,7 @@
 			left: 0;
 			width: 100%;
 		}
-		@include to(767px) {
+		@include to(768px) {
 			.serve {
 				padding: 0;
 				height: 0;
@@ -143,12 +124,12 @@
 		}
 		
 		&.is-active {
-			@include from(768px) {
+			@include from(769px) {
 				opacity: 1;
 				pointer-events: all;
 				position: static;
 			}
-			@include to(767px) {
+			@include to(768px) {
 				.servtab__mobile-control {
 					background: #fff;
 					border-color: #05133D;
@@ -161,7 +142,7 @@
 		}
 	}
 	&__mobile-control {
-		@include from(768px) {
+		@include from(769px) {
 			display: none;
 		}
 		border: 1px solid #F7F9FE;
@@ -233,7 +214,7 @@
 		@include to(768px) {
 			padding-left: 17px;
 		}
-		@include to(767px) {
+		@include to(768px) {
 			height: auto;
 			padding: 0;
 			padding-left: 44px;
@@ -252,7 +233,7 @@
 			@include to(768px) {
 				width: 75%;
 			}
-			@include to(767px) {
+			@include to(768px) {
 				transform: none;
 				right: 24px;
 				width: 62%;
@@ -282,7 +263,7 @@
 		}
 	}
 	.serve__addt-pic {
-		@include to(767px) {
+		@include to(768px) {
 			right: 24px;
 			transform: none;
 		}

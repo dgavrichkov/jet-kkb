@@ -2,10 +2,8 @@ export default class Bonuses {
     constructor(el) {
         this._el = el;
         this._isAnimed = false;
-        // this._handleIntersection = this._handleIntersection.bind(this);
     }
     init() {
-        console.log(this._el);
         this._setIntersectionObserver();
     }
 
@@ -32,7 +30,6 @@ export default class Bonuses {
     }
 
     _handleIntersection() {
-        console.log(this._el)
         this._el.classList.add("is-animed");
         this._isAnimed = true;
     }

@@ -37,7 +37,7 @@ export default class Presentation {
         this._setStep();
         this._setResizeHandler();
         this._setSwiper();
-        // this._setItemClickHandler();
+        this._setItemClickHandler();
 
         // позиция начала блока
         // this._elTopPos = this._el.getBoundingClientRect().top + pageYOffset;
@@ -130,6 +130,11 @@ export default class Presentation {
             }
         }, 4000)
     }
+    _clearInterval() {
+        if(this._interval) {
+            clearTimeout(this._interval);
+        }
+    }
     _setScrollingHandler() {
         window.addEventListener("scroll", this._handleScroll);
     }
@@ -141,7 +146,9 @@ export default class Presentation {
     _setItemClickHandler() {
         this._items.forEach(item => {
             item.addEventListener("click", () => {
+                this._clearInterval();
                 this._setCurrent(item);
+                this._setInterval();
             });
         });
     }

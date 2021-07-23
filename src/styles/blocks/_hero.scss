@@ -2,6 +2,7 @@
 	@include to(640px) {
 		height: auto;
 		min-height: 100vh;
+		padding-top: 30px;
 	}
 	@media (orientation: landscape) and (hover: none) {
 		height: auto;

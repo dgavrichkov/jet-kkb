@@ -27,6 +27,12 @@
 		padding-top: 90px;
 		padding-bottom: 140px;
 	}
+	&__inner {
+		@include to(1024px) {
+			padding-top: 0;
+		}
+		padding-top: 40px;
+	}
 	@include to(640px) {
 		text-align: center;
 	}
@@ -220,7 +226,7 @@
 		grid-column: span 4 / -1;
 		transform: translateX(-24px);
 		max-width: 375px;
-		margin-top: -170px;
+		margin-top: -210px;
 	}
 	&__screen {
 		position: absolute;

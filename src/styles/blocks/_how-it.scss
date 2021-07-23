@@ -1,10 +1,15 @@
 .how-it {
-	@include to(640px) {
-		height: auto;
-	}
-	height: 100vh;
 	background: #F7F9FE;
-	overflow: visible;
+	position: relative;
+	&__intersector {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		z-index: 2;
+		pointer-events: none;
+	}
 	&__box {
 		@include to(640px) {
 			height: auto;
@@ -17,8 +22,6 @@
 			padding-bottom: 65px;
 		}
 		min-height: 800px;
-		height: 100vh;
-		// position: sticky;
 		top: 0;
 		overflow: hidden;
 		padding-top: 90px;
@@ -85,9 +88,8 @@
 			padding: 0 24px;
 		}
 		display: flex;
-		cursor: pointer;
-		&.is-active,
-		&.is-seen {
+		// cursor: pointer;
+		&.is-active {
 			.how-it__text-item {
 				color: $ca;
 			}
@@ -100,21 +102,6 @@
 				background-color: #05133D;
 			}
 		}
-		// &.is-active + & {
-		// 	@include from(641px) {
-		// 		.how-it__text-item {
-		// 			color: $ca;
-		// 		}
-		// 		.how-it__count-icon {
-		// 			path {
-		// 				fill: $ca;
-		// 			}
-		// 		}
-		// 		.how-it__count-bar {
-		// 			background-color: #05133D;
-		// 		}
-		// 	}
-		// }
 	}
 	&__count {
 		@include to(640px) {

@@ -6,6 +6,7 @@ export default class Presentation {
         this._items = this._el.querySelectorAll("[data-presentation-item]");
         this._itemsContainer = this._items[0].parentElement;
         this._screens = this._el.querySelectorAll("[data-presentation-screen]");
+        this._intersector = this._el.querySelector(".how-it__intersector");
 
         this._wrapper = this._el.querySelector(".how-it__content");
 
@@ -14,6 +15,8 @@ export default class Presentation {
         this._current = null;
         this._currentScreen = null;
         this._currentHeight = null;
+
+        this._interval = null;
 
         this._scrollPos = 0;
         this._heightModifier = 0;
@@ -34,7 +37,7 @@ export default class Presentation {
         this._setStep();
         this._setResizeHandler();
         this._setSwiper();
-        this._setItemClickHandler();
+        // this._setItemClickHandler();
 
         // позиция начала блока
         // this._elTopPos = this._el.getBoundingClientRect().top + pageYOffset;
@@ -100,23 +103,32 @@ export default class Presentation {
     _setIntersectionObserver() {
         const options = {
             root: null,
-            threshold: 1
+            threshold: 0.75
         };
         const callback = (entries) => {
             if(window.innerWidth <= 640) {
                 return false;
             }
+
             entries.forEach(entry => {
-                const {isIntersecting, intersectionRatio} = entry;
-                if(isIntersecting && intersectionRatio === 1) {
-                    if(!this._current) {
-                        this._setCurrent(this._items[0]);
-                    }
+                const {isIntersecting} = entry;
+                if(isIntersecting && !this._interval) {
+                    this._setCurrent(this._items[0]);
+                    this._setInterval();
                 }
             })
         }
         const observer = new IntersectionObserver(callback, options);
-        observer.observe(this._box);
+        observer.observe(this._intersector);
+    }
+    _setInterval() {
+        this._interval = setInterval(() => {
+            if(this._current.nextElementSibling) {
+                this._setCurrent(this._current.nextElementSibling);
+            } else {
+                this._setCurrent(this._items[0]);
+            }
+        }, 4000)
     }
     _setScrollingHandler() {
         window.addEventListener("scroll", this._handleScroll);

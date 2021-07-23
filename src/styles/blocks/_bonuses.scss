@@ -1,9 +1,7 @@
 .bonuses {
 	padding-top: 100px;
 	padding-bottom: 122px;
-	&__inner {
-
-	}
+	position: relative;
 	&__lead {
 		@include to(1024px) {
 			font-size: 36px;
@@ -61,6 +59,10 @@
 		top: 0;
 		left: 0;
 		&[data-bonuse-pic] {
+			@include to(768px) {
+				// opacity: 1;
+				// transform: initial;
+			}
 			&::after {
 				content: "";
 				display: block;
@@ -237,7 +239,47 @@
 			}
 		}
 	}
+	&__intersector {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100vh;
+		z-index: 2;
+		pointer-events: none;
+	}
 	&.is-animed {
+		.bonuses__pic-elem {
+			&[data-bonuse-pic=phone] {
+				opacity: 1;
+			}
+			&[data-bonuse-pic=triangle] {
+				opacity: 1;
+				transform: translateX(0);
+			}
+			&[data-bonuse-pic=pocket] {
+				transform: translateY(0);
+				opacity: 1;
+			}
+			&[data-bonuse-pic=success] {
+				transform: translateY(0);
+				opacity: 1;
+			}
+			&[data-bonuse-pic=operator] {
+				transform: translateY(0);
+				opacity: 1;
+			}
+			&[data-bonuse-pic=cardBlue] {
+				opacity: 1;
+				transform: translateX(0) rotate(0deg);
+			}
+			&[data-bonuse-pic=cardRed] {
+				opacity: 1;
+				transform: translateX(0) rotate(0deg);
+			}
+		}
+	}
+	@include to(640px) {
 		.bonuses__pic-elem {
 			&[data-bonuse-pic=phone] {
 				opacity: 1;

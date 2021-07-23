@@ -1,6 +1,7 @@
 export default class Bonuses {
     constructor(el) {
         this._el = el;
+        this._intersector = this._el.querySelector(".bonuses__intersector");
         this._isAnimed = false;
     }
     init() {
@@ -10,14 +11,14 @@ export default class Bonuses {
     _setIntersectionObserver() {
         const options = {
             root: null,
-            threshold: 0.8
+            threshold: 0.75,
         };
         const callback = (entries) => {
             if(window.innerWidth < 768) {
                 return false;
             }
             entries.forEach(entry => {
-                const {isIntersecting, intersectionRatio} = entry;
+                const {isIntersecting} = entry;
                 if(isIntersecting) {
                     if(!this._isAnimed) {
                         this._handleIntersection();
@@ -26,7 +27,7 @@ export default class Bonuses {
             })
         }
         const observer = new IntersectionObserver(callback, options);
-        observer.observe(this._el);
+        observer.observe(this._intersector);
     }
 
     _handleIntersection() {

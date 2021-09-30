@@ -106,18 +106,17 @@ export default class Presentation {
             threshold: 0.75
         };
         const callback = (entries) => {
-            if(window.innerWidth <= 640) {
-                return false;
-            }
-
             entries.forEach(entry => {
+                if(window.innerWidth <= 640) {
+                    return false;
+                }
                 const {isIntersecting} = entry;
                 if(isIntersecting && !this._interval) {
                     this._setCurrent(this._items[0]);
                     this._setInterval();
                 }
-            })
-        }
+            });
+        };
         const observer = new IntersectionObserver(callback, options);
         observer.observe(this._intersector);
     }
